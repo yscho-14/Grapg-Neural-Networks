@@ -37,3 +37,28 @@ if torch.cuda.is_available():
     torch.backends.cudnn.benchmark = False
 
 print("Installation Complete.")
+
+# GAT, Graph Attention Networks
+
+# 1. library
+import torch
+
+find_links = f"https://data.pyg.org/whl/torch-{torch.__version__}.html"
+
+!pip install -q \
+    torch-scatter \
+    torch-sparse \
+    torch-cluster \
+    torch-spline-conv \
+    torch-geometric \
+    -f $find_links
+
+# seed set
+torch.manual_seed(0)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed(0)
+    torch.cuda.manual_seed_all(0)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+print("Installation Complete.")
