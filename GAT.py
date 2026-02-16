@@ -62,3 +62,40 @@ if torch.cuda.is_available():
     torch.backends.cudnn.benchmark = False
 
 print("Installation Complete.")
+
+# 1. Edge Feature Construction
+
+# setup: Adjacent Matrix 
+# Diagonal Symmetry means Undirected Graph
+
+A = np.array([
+    [1, 1, 1, 1], # 0 node
+    [1, 1, 0, 0], # 1 node
+    [1, 0, 1, 1], # 2 node
+    [1, 0, 1, 1]  # 3 node
+])
+A
+
+import networkx as nx
+
+G = nx.from_numpy_array(A)
+
+plt.figure(figsize=(3, 3))
+nx.draw(G, 
+        with_labels=True, 
+        node_color='lightgreen', 
+        node_size=500, 
+        font_weight='bold', 
+        edge_color='gray',
+        linewidths=2)
+
+plt.title("Graph from Adjacency Matrix with Self-loops")
+plt.show()
+
+# setup: node feature matrix
+np.random.seed(1)
+
+X = np.random.uniform(-1, 1, (4, 4)) #(low, high (nodes, features))
+X
+
+
